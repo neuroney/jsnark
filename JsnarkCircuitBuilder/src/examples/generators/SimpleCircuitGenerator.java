@@ -31,7 +31,7 @@ public class SimpleCircuitGenerator extends CircuitGenerator {
 		Wire result = r1.add(5).mul(r2.mul(6));
 
 		// mark the wire as output
-		makeOutput(result);
+		makeOutput(r1);
 
 	}
 
