@@ -7,11 +7,11 @@ import circuit.eval.CircuitEvaluator;
 import circuit.structure.CircuitGenerator;
 import circuit.structure.Wire;
 
-public class Circuit510 extends CircuitGenerator {
+public class Circuit59 extends CircuitGenerator {
 
 	private Wire[] inputs;
 
-	public Circuit510(String circuitName) {
+	public Circuit59(String circuitName) {
 		super(circuitName);
 	}
 
@@ -30,7 +30,6 @@ public class Circuit510 extends CircuitGenerator {
         Wire x07 = x06.mul(inputs[0]);
         Wire x08 = x07.mul(inputs[0]);
         Wire x09 = x08.mul(inputs[0]);
-        Wire x010 = x09.mul(inputs[0]);
 
 Wire x11 = inputs[1];
 Wire x12 = x11.mul(inputs[1]);
@@ -41,7 +40,6 @@ Wire x16 = x15.mul(inputs[1]);
 Wire x17 = x16.mul(inputs[1]);
 Wire x18 = x17.mul(inputs[1]);
 Wire x19 = x18.mul(inputs[1]);
-Wire x110 = x19.mul(inputs[1]);
 
 
 
@@ -54,7 +52,6 @@ Wire x26 = x25.mul(inputs[2]);
 Wire x27 = x26.mul(inputs[2]);
 Wire x28 = x27.mul(inputs[2]);
 Wire x29 = x28.mul(inputs[2]);
-Wire x210 = x29.mul(inputs[2]);
 
 
 Wire x31 = inputs[3];
@@ -66,7 +63,6 @@ Wire x36 = x35.mul(inputs[3]);
 Wire x37 = x36.mul(inputs[3]);
 Wire x38 = x37.mul(inputs[3]);
 Wire x39 = x38.mul(inputs[3]);
-Wire x310 = x39.mul(inputs[3]);
 
 Wire x41 = inputs[4];
 Wire x42 = x41.mul(inputs[4]);
@@ -77,7 +73,6 @@ Wire x46 = x45.mul(inputs[4]);
 Wire x47 = x46.mul(inputs[4]);
 Wire x48 = x47.mul(inputs[4]);
 Wire x49 = x48.mul(inputs[4]);
-Wire x410 = x49.mul(inputs[4]);
 
         Wire d1 = x21;
 		Wire d2 = x22;
@@ -88,9 +83,8 @@ Wire x410 = x49.mul(inputs[4]);
         Wire d7 = x03.mul(x23).mul(x31);
         Wire d8 = x02.mul(x26);
         Wire d9 = x02.mul(x26).mul(x31);
-        Wire d10 = x01.mul(x11).mul(x27).mul(x31);
 
-        Wire result = d1.add(d2).add(d3).add(d4).add(d5).add(d6).add(d7).add(d8).add(d9).add(d10);
+        Wire result = d1.add(d2).add(d3).add(d4).add(d5).add(d6).add(d7).add(d8).add(d9);
 
 
 		// mark the wire as output
@@ -110,7 +104,7 @@ Wire x410 = x49.mul(inputs[4]);
 	public static void main(String[] args) throws Exception {
 
         long stime = System.currentTimeMillis();
-        Circuit510 generator = new Circuit510("Circuit510");
+        Circuit59 generator = new Circuit59("Circuit59");
         generator.generateCircuit();
         generator.evalCircuit();
         long etime = System.currentTimeMillis();

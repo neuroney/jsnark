@@ -7,11 +7,11 @@ import circuit.eval.CircuitEvaluator;
 import circuit.structure.CircuitGenerator;
 import circuit.structure.Wire;
 
-public class Circuit55 extends CircuitGenerator {
+public class Circuit52 extends CircuitGenerator {
 
 	private Wire[] inputs;
 
-	public Circuit55(String circuitName) {
+	public Circuit52(String circuitName) {
 		super(circuitName);
 	}
 
@@ -23,44 +23,26 @@ public class Circuit55 extends CircuitGenerator {
 
         Wire x01 = inputs[0];
         Wire x02 = x01.mul(inputs[0]);
-        Wire x03 = x02.mul(inputs[0]);
-        Wire x04 = x03.mul(inputs[0]);
-        Wire x05 = x04.mul(inputs[0]);
 
 Wire x11 = inputs[1];
 Wire x12 = x11.mul(inputs[1]);
-Wire x13 = x12.mul(inputs[1]);
-Wire x14 = x13.mul(inputs[1]);
-Wire x15 = x14.mul(inputs[1]);
 
 
 
 Wire x21 = inputs[2];
 Wire x22 = x21.mul(inputs[2]);
-Wire x23 = x22.mul(inputs[2]);
-Wire x24 = x23.mul(inputs[2]);
-Wire x25 = x24.mul(inputs[2]);
 
 
 Wire x31 = inputs[3];
 Wire x32 = x31.mul(inputs[3]);
-Wire x33 = x32.mul(inputs[3]);
-Wire x34 = x33.mul(inputs[3]);
-Wire x35 = x34.mul(inputs[3]);
 
 Wire x41 = inputs[4];
 Wire x42 = x41.mul(inputs[4]);
-Wire x43 = x42.mul(inputs[4]);
-Wire x44 = x43.mul(inputs[4]);
-Wire x45 = x44.mul(inputs[4]);
 
         Wire d1 = x21;
 		Wire d2 = x22;
-        Wire d3 = x01.mul(x21).mul(x31);
-        Wire d4 = x01.mul(x11).mul(x21).mul(x31);
-        Wire d5 = x01.mul(x23).mul(x31);
 
-        Wire result = d1.add(d2).add(d3).add(d4).add(d5);
+        Wire result = d1.add(d2);
 
 
 		// mark the wire as output
@@ -80,7 +62,7 @@ Wire x45 = x44.mul(inputs[4]);
 	public static void main(String[] args) throws Exception {
 
         long stime = System.currentTimeMillis();
-        Circuit55 generator = new Circuit55("Circuit55");
+        Circuit52 generator = new Circuit52("Circuit52");
         generator.generateCircuit();
         generator.evalCircuit();
         long etime = System.currentTimeMillis();
