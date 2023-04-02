@@ -6,6 +6,8 @@ package examples.generators;
 import circuit.eval.CircuitEvaluator;
 import circuit.structure.CircuitGenerator;
 import circuit.structure.Wire;
+import java.io.*;
+import circuit.config.Config;
 
 public class Circuit51 extends CircuitGenerator {
 
@@ -17,27 +19,58 @@ public class Circuit51 extends CircuitGenerator {
 
 	@Override
 	protected void buildCircuit() {
-
 		// declare input array of length 5.
+
+		FileReader file = null;
+		int [][]cc = new int[1125][5];
+		try {
+			file = new FileReader("GTDpoly.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		BufferedReader br = new BufferedReader(file);//读取文件
+        try {
+            String []sp = null;
+            int count=0;
+			String line = ""; 
+            while((line=br.readLine())!=null) {//按行读取
+                sp = line.split(" ");//按空格进行分割
+                for(int i=0;i<sp.length;i++){
+					cc[count][i] = Integer.parseInt(sp[i]);
+                }
+                count++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 		inputs = createInputWireArray(5);
 
-        Wire x01 = inputs[0];
-
-Wire x11 = inputs[1];
-
-
-
-Wire x21 = inputs[2];
-
-
-Wire x31 = inputs[3];
-
-Wire x41 = inputs[4];
-
-        Wire d1 = x21;
-
-        Wire result = d1.add(3);
-
+		Wire result = inputs[0];
+		boolean inited;
+		int degree_f = 4;
+		for (int i = 1; i < 1125; ++i) {
+			if (cc[i][0]+cc[i][1]+cc[i][2]+cc[i][3]+cc[i][4] > degree_f) {
+				break;
+			}
+			inited = false;
+			Wire Monomial = inputs[0];
+			for (int j = 0; j < 5; ++j) {
+				if (!inited && cc[i][j] != 0) {
+					inited = true;
+					Monomial.add(inputs[j]).sub(inputs[0]);
+					for (int k = 1; k < cc[i][j]; ++k) {
+						Monomial = Monomial.mul(inputs[j]);
+					}
+					continue;
+				}
+				for (int k = 0; k < cc[i][j]; ++k) {
+					Monomial = Monomial.mul(inputs[j]);
+				}
+			}
+			result.add(Monomial);
+		}
+		result.sub(inputs[0]);
 
 		// mark the wire as output
 		makeOutput(result);
@@ -56,7 +89,7 @@ Wire x41 = inputs[4];
 	public static void main(String[] args) throws Exception {
 
         long stime = System.currentTimeMillis();
-        Circuit51 generator = new Circuit51("Circuit51");
+        Circuit51 generator = new Circuit51("Circuit54");
         generator.generateCircuit();
         generator.evalCircuit();
         long etime = System.currentTimeMillis();
